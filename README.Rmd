@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# schemeR
+
+The goal of schemeR is to visualize SQLite databases.
+
+## Installation
+
+You can install schemeR from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("jsta/schemeR")
+```
+
+## Usage
+
+This is a basic example:
+
+```{r example}
+dt <- dplyr::lahman_sqlite()
+
+dplyr::src_tbls(dt)
+
+```

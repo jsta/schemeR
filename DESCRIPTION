@@ -1,9 +1,11 @@
 Package: schemeR
-Title: What the Package Does (one line, title case)
+Title: Visualize SQLite database schemas
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Authors@R: person("Joseph", "Stachelek", email = "stachel2@msu.edu", role = c("aut", "cre"))
+Description: Visualize SQLite database schemas
 Depends: R (>= 3.3.2)
-License: What license is it under?
+License: GPL
 Encoding: UTF-8
 LazyData: true
+Imports: dplyr
+Suggests: testthat, RSQLite, Lahman
