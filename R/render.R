@@ -1,26 +1,18 @@
-
-#' get_names
+#' df_2_dot
 #'
-#' @param sqlite  SQLite database
-#'
-#' @export
-#'
-#' @examples \dontrun{
-#' get_names(dplyr::tbl(dt, "TeamsHalf"))
-#' }
-get_names <- function(sqlite){
-  dplyr::src_tbls(sqlite)
-}
-
-#' get_colums
-#'
-#' @param tbl tibble
+#' @param df
 #'
 #' @export
 #'
-get_columns <- function(tbl){
-  names(data.frame(tbl))
+#' @examples
+#' df <- data.frame(
+#'          "name" = 1:4,
+#'          "people" = c("bob", "jim", "beatrice", "ann"))
+#' df_2_dot("df", df)
+df_2_dot <- function(df_name, df){
+  paste(df_name, paste(names(df), collapse = "| "), sep = "| ")
 }
+
 
 #' render_df
 #'
@@ -49,19 +41,4 @@ render_df <- function(df){
   dot_txt <- gsub("neato,", "neato, rankdir = 'LR',", dot_txt)
 
   DiagrammeR::grViz(diagram = dot_txt)
-}
-
-#' df_2_dot
-#'
-#' @param df
-#'
-#' @export
-#'
-#' @examples
-#' df <- data.frame(
-#'          "name" = 1:4,
-#'          "people" = c("bob", "jim", "beatrice", "ann"))
-#' df_2_dot("df", df)
-df_2_dot <- function(df_name, df){
-  paste(df_name, paste(names(df), collapse = "| "), sep = "| ")
 }
