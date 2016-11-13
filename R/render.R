@@ -80,6 +80,7 @@ render_sqlite <- function(db){
     DiagrammeR::create_node_df(
       n = length(db_names),
       label = c(labels),
+      fixedsize = FALSE,
       fontsize = rep(5, length(db_names)),
       shape = rep("record", length(db_names)))
   graph <- DiagrammeR::create_graph(nodes_df = ndf)

@@ -8,6 +8,11 @@
 #' @importFrom png writePNG
 #'
 #' @details https://github.com/rich-iannone/DiagrammeR/issues/133
+#'
+#' @examples \dontrun{
+#' res <- DiagrammeR::grViz("graphviz_datastruct.gv")
+#' export_svg(res, "images/grViz.png")
+#' }
 
 export_svg <- function(rendered, fpath){
 
