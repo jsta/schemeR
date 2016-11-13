@@ -9,7 +9,7 @@ always_allow_html: yes
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "images"
 )
 ```
 
@@ -43,32 +43,28 @@ names(dt) <- dt_names
 
 ```
 
-```{r }
-# http://graphviz.org/content/datastruct
-# https://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html
-
-library(DiagrammeR)
-
-ndf <-
-  create_node_df(
-    rankdir = "LR",
-    n = 2,
-    label = c("name| value 1| value 2| value 3| value 4", 3),
-    type = c("type_1", "type_1"),
-    shape = c("record", "record"),
-    values = c(1, 2))
-graph <- create_graph(nodes_df = ndf)
-# get_node_df(graph)
-# render_graph(graph)
-
-dot_txt <- generate_dot(graph)
-dot_txt <- gsub("neato,", "neato, rankdir = 'LR',", dot_txt)
-
-grViz(diagram = dot_txt)
+```{r message=FALSE, results='hide'}
 
 # https://github.com/rich-iannone/DiagrammeR/issues/133
+res <- schemeR::render_df(df)
+
+res <- DiagrammeRsvg::export_svg(res)
+
+res <- charToRaw(res)
+
+res <- rsvg::rsvg(res, height = 500)
+
+png::writePNG(res, "images/example.png")
+
 
 ```
 
 ![](images/example.png)
 
+## References
+
+http://graphviz.org/content/datastruct
+
+https://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html
+
+https://github.com/rich-iannone/DiagrammeR/issues/133

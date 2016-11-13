@@ -33,36 +33,29 @@ names(dt) <- dt_names
 ```
 
 ``` r
-# http://graphviz.org/content/datastruct
-# https://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html
-
-library(DiagrammeR)
-
-ndf <-
-  create_node_df(
-    rankdir = "LR",
-    n = 2,
-    label = c("name| value 1| value 2| value 3| value 4", 3),
-    type = c("type_1", "type_1"),
-    shape = c("record", "record"),
-    values = c(1, 2))
-graph <- create_graph(nodes_df = ndf)
-# get_node_df(graph)
-# render_graph(graph)
-
-dot_txt <- generate_dot(graph)
-dot_txt <- gsub("neato,", "neato, rankdir = 'LR',", dot_txt)
-
-grViz(diagram = dot_txt)
-```
-
-<!--html_preserve-->
-
-<script type="application/json" data-for="htmlwidget-10d7df1f8e6027cb85f6">{"x":{"diagram":"digraph {\n\ngraph [layout = neato, rankdir = \"LR\",\n       outputorder = edgesfirst]\n\nnode [fontname = Helvetica,\n     fontsize = 10,\n     shape = circle,\n     fixedsize = true,\n     width = 0.5,\n     style = filled,\n     fillcolor = aliceblue,\n     color = gray70,\n     fontcolor = gray50]\n\nedge [len = 1.5,\n     color = gray40,\n     arrowsize = 0.5]\n\n  \"1\" [label = \"name| value 1| value 2| value 3| value 4\", shape = \"record\"] \n  \"2\" [label = \"3\", shape = \"record\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-<!--/html_preserve-->
-``` r
+df <- data.frame(
+          "name" = 1:4,
+          "people" = c("bob", "jim", "beatrice", "ann"))
 
 # https://github.com/rich-iannone/DiagrammeR/issues/133
+res <- schemeR::render_df(df)
+
+res <- DiagrammeRsvg::export_svg(res)
+
+res <- charToRaw(res)
+
+res <- rsvg::rsvg(res, height = 500)
+
+png::writePNG(res, "images/example.png")
 ```
 
 ![](images/example.png)
+
+References
+----------
+
+<http://graphviz.org/content/datastruct>
+
+<https://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html>
+
+<https://github.com/rich-iannone/DiagrammeR/issues/133>
