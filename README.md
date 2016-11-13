@@ -22,34 +22,31 @@ Usage
 
 This is a basic example:
 
+### SQLite
+
 ``` r
 library(schemeR)
 
-dt <- dplyr::lahman_sqlite()
-
-dt_names <- get_names(dt)
-dt <- lapply(dt_names, function(x) get_columns(dplyr::tbl(dt, x)))
-names(dt) <- dt_names
+db <- dplyr::lahman_sqlite()
+res <- schemeR::render_sqlite(db)
+schemeR::export_svg(res, "images/sqlite_example.png")
 ```
 
+![](images/sqlite_example.png)
+
+### data.frame
+
 ``` r
+
 df <- data.frame(
           "name" = 1:4,
           "people" = c("bob", "jim", "beatrice", "ann"))
 
-# https://github.com/rich-iannone/DiagrammeR/issues/133
 res <- schemeR::render_df(df)
-
-res <- DiagrammeRsvg::export_svg(res)
-
-res <- charToRaw(res)
-
-res <- rsvg::rsvg(res, height = 500)
-
-png::writePNG(res, "images/example.png")
+schemeR::export_svg(res, "images/df_example.png")
 ```
 
-![](images/example.png)
+![](images/df_example.png)
 
 References
 ----------

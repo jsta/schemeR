@@ -34,7 +34,7 @@ This is a basic example:
 
 ### SQLite 
 
-```{r example}
+```{r example, results = 'hide'}
 library(schemeR)
 
 db <- dplyr::lahman_sqlite()
