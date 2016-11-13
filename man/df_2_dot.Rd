@@ -7,7 +7,9 @@
 df_2_dot(df_name, df)
 }
 \arguments{
-\item{df}{}
+\item{df_name}{character name of data.frame}
+
+\item{df}{data.frame}
 }
 \description{
 df_2_dot

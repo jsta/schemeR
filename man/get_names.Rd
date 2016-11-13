@@ -4,17 +4,17 @@
 \alias{get_names}
 \title{get_names}
 \usage{
-get_names(sqlite)
+get_names(db)
 }
 \arguments{
-\item{sqlite}{SQLite database}
+\item{db}{SQLite database}
 }
 \description{
 get_names
 }
 \examples{
 \dontrun{
-get_names(dplyr::tbl(dt, "TeamsHalf"))
+get_names(dplyr::lahman_sqlite())
 }
 }
 

@@ -7,7 +7,7 @@
 render_df(df)
 }
 \arguments{
-\item{df}{}
+\item{df}{data.frame}
 }
 \description{
 render_df

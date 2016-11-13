@@ -2,7 +2,7 @@ Package: schemeR
 Title: Visualize SQLite database schemas
 Version: 0.0.0.9000
 Authors@R: person("Joseph", "Stachelek", email = "stachel2@msu.edu", role = c("aut", "cre"))
-Description: Visualize SQLite database schemas
+Description: Visualize SQLite database schemas.
 Depends:
     R (>= 3.3.2)
 License: GPL
@@ -10,7 +10,10 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     dplyr,
-    DiagrammeR
+    DiagrammeR,
+    DiagrammeRsvg,
+    rsvg,
+    png
 Suggests:
     testthat,
     RSQLite,
